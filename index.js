@@ -50,7 +50,7 @@ function _registerListener(win, opts = {}) {
 
         if (queueItem) {
             const folder = queueItem.downloadFolder || downloadFolder
-            const filePath = path.join(folder, queueItem.path, itemFilename);
+            const filePath = path.join(folder, queueItem.path, queueItem.filename || itemFilename);
 
             const totalBytes = item.getTotalBytes();
             let speedValue = 0;
@@ -73,6 +73,7 @@ function _registerListener(win, opts = {}) {
                     speedValue = Math.max(PreviousReceivedBytes, ReceivedBytesArr[0]) - Math.min(PreviousReceivedBytes, ReceivedBytesArr[0]);
                 }
                 const progress = {
+                    percentage: receivedBytes / totalBytes,
                     progress: receivedBytes * 100 / totalBytes,
                     speedBytes: speedValue,
                     speed: _bytesToSize(speedValue) + '/sec',
@@ -132,12 +133,12 @@ const register = (opts = {}) => {
 };
 
 const download = (options, callback) => {
-    let win = BrowserWindow.getFocusedWindow() || lastWindowCreated;
     options = Object.assign({}, { path: '' }, options);
-
+    let win = options.window || BrowserWindow.getFocusedWindow() || lastWindowCreated;
+    
     const request = net.request(options.url);
     
-    const filename = decodeURIComponent(path.basename(options.url));
+    const filename = options.filename || decodeURIComponent(path.basename(options.url));
     const url = decodeURIComponent(options.url);
 
     const folder = options.downloadFolder || downloadFolder
