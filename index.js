@@ -37,7 +37,7 @@ const _popQueueItem = (url) => {
 
 function _registerListener(win, opts = {}) {
 
-    lastWindowCreated = win;
+    lastWindowCreated = opts.window || win;
     downloadFolder = opts.downloadFolder || downloadFolder;
 
     const listener = (e, item) => {
@@ -134,7 +134,7 @@ const register = (opts = {}) => {
 
 const download = (options, callback) => {
     options = Object.assign({}, { path: '' }, options);
-    let win = options.window || BrowserWindow.getFocusedWindow() || lastWindowCreated;
+    let win = BrowserWindow.getFocusedWindow() || lastWindowCreated;
     
     const request = net.request(options.url);
     
