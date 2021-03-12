@@ -140,6 +140,7 @@ const download = (options, callback) => {
     
     const filename = options.filename || decodeURIComponent(path.basename(options.url));
     const url = decodeURIComponent(options.url);
+    const overwrite = options.overwrite;
 
     const folder = options.downloadFolder || downloadFolder
     const filePath = path.join(folder, options.path.toString(), filename.split(/[?#]/)[0])
@@ -177,6 +178,7 @@ const download = (options, callback) => {
         queue.push({
             url: url,
             filename: filename,
+            ovewrite: overwrite,
             downloadFolder: options.downloadFolder,
             path: options.path.toString(),
             callback: callback,
@@ -184,7 +186,7 @@ const download = (options, callback) => {
         });
 
 
-        if (fs.existsSync(filePath)) {
+        if (fs.existsSync(filePath) && !overwrite) {
             const stats = fs.statSync(filePath);
 
             const fileOffset = stats.size;
@@ -217,7 +219,7 @@ const download = (options, callback) => {
             }
 
         } else {
-            console.log(filename + ' does not exist, download it now');
+            console.log(filename + ' does not exist or is to be ovewritten, download it now');
             win.webContents.downloadURL(options.url);
         }
     });
@@ -233,7 +235,7 @@ const bulkDownload = (options, callback) => {
     let errors = [];
 
     options.urls.forEach((url) => {
-        download({ url, path: options.path, onProgress: options.onProgress }, function (error, itemInfo) {
+        download({ url, path: options.path, onProgress: options.onProgress, overwrite: options.overwrite }, function (error, itemInfo) {
 
             if (error) {
                 errors.push(itemInfo.url);
