@@ -14,7 +14,7 @@
 ## Install
 
 ```
-$ npm install electron-download-manager --save
+$ npm install squidjam/electron-download-manager --save
 ```
 
 
