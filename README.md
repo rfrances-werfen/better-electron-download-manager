@@ -14,7 +14,7 @@
 ## Install
 
 ```
-$ npm install electron-download-manager
+$ npm install electron-download-manager --save
 ```
 
 
