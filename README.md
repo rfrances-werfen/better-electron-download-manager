@@ -1,4 +1,4 @@
-# electron-download-manager
+# better-electron-download-manager
 
 > Manage downloadItems from [Electron](https://electronjs.org)'s BrowserWindows without user interaction, allowing single file download and bulk downloading asynchronously
 
@@ -14,7 +14,7 @@
 ## Install
 
 ```
-$ npm install squidjam/electron-download-manager --save
+$ npm install better-electron-download-manager --save
 ```
 
 
@@ -28,7 +28,7 @@ Register the listener (that will catch all DownloadItems)
 const electron = require("electron");
 const { app, BrowserWindow } = electron;
 
-const DownloadManager = require("electron-download-manager");
+const DownloadManager = require("better-electron-download-manager");
 
 DownloadManager.register();
 
