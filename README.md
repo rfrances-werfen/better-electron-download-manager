@@ -1,4 +1,4 @@
-# better-electron-download-manager
+# electron-download-manager-remake
 
 > Manage downloadItems from [Electron](https://electronjs.org)'s BrowserWindows without user interaction, allowing single file download and bulk downloading asynchronously
 
@@ -14,7 +14,7 @@
 ## Install
 
 ```
-$ npm install better-electron-download-manager --save
+$ npm install electron-download-manager-remake --save
 ```
 
 
@@ -28,7 +28,7 @@ Register the listener (that will catch all DownloadItems)
 const electron = require("electron");
 const { app, BrowserWindow } = electron;
 
-const DownloadManager = require("better-electron-download-manager");
+const DownloadManager = require("electron-download-manager-remake");
 
 DownloadManager.register();
 
@@ -47,7 +47,7 @@ After registering you must wait until at least 1 window is created to call Downl
 const electron = require("electron");
 const { app, BrowserWindow } = electron;
 
-const DownloadManager = require("better-electron-download-manager");
+const DownloadManager = require("electron-download-manager-remake");
 
 DownloadManager.register({
     downloadFolder: app.getPath("downloads") + "/my-app"
@@ -82,7 +82,7 @@ This example downloads *https://i.imgur.com/H124sSq.jpg* file to *user-downloads
 const electron = require("electron");
 const {app, BrowserWindow} = electron;
 
-const DownloadManager = require("better-electron-download-manager");
+const DownloadManager = require("electron-download-manager-remake");
 
 DownloadManager.register({downloadFolder: app.getPath("downloads") + "/my-app"});;
 
@@ -124,7 +124,7 @@ This example downloads 5 files to *user-downloads-folder/my-app/bulk-downloads*
 Once you've registered the listener on the Main process at any time you can call the download function through electron's [`remote`](https://electronjs.org/docs/api/remote)
 
 ```js
-require("electron").remote.require("better-electron-download-manager").download({
+require("electron").remote.require("electron-download-manager-remake").download({
     url: "https://i.imgur.com/H124sSq.jpg"
 }, function (error, info) {
     if (error) {
