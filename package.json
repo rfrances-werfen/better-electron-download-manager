@@ -1,14 +1,14 @@
 {
-  "name": "better-electron-download-manager",
+  "name": "electron-download-manager-remake",
   "version": "2.3.0",
-  "description": "Manage downloadItems from Electron's BrowserWindows without user interaction, allowing single file download and bulk downloading",
+  "description": "Manage downloadItems from Electron's BrowserWindows without user interaction, allowing single file and bulk downloading",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "github:rfrances-werfen/better-electron-download-manager"
+    "url": "github:rfrances-werfen/electron-download-manager-remake"
   },
   "keywords": [
     "electron",
@@ -22,9 +22,9 @@
   "contributors": ["Daniel Nieto <danielnieto89@gmail.com>"],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rfrances-werfen/better-electron-download-manager/issues"
+    "url": "https://github.com/rfrances-werfen/electron-download-manager-remake/issues"
   },
-  "homepage": "https://github.com/rfrances-werfen/better-electron-download-manager#readme",
+  "homepage": "https://github.com/rfrances-werfen/electron-download-manager-remake#readme",
   "devDependencies": {
     "electron": ">=1.4.12"
   }
